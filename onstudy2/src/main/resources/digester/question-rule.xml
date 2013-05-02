@@ -1,0 +1,63 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<digester-rules>
+	<pattern value="question">
+	    <object-create-rule classname="org.onproject.onstudy.data.Question" />
+	    
+	    <pattern value="id">
+	    	<bean-property-setter-rule />
+	    </pattern>
+	    
+	    <pattern value="title">
+	    	<bean-property-setter-rule />
+	    </pattern>
+	    
+		<pattern value="sentence">
+			<bean-property-setter-rule />
+		</pattern>
+		
+		<pattern value="options">
+			<pattern value="option">
+				<object-create-rule classname="org.onproject.onstudy.data.Option" />
+				<pattern value="id">
+					<bean-property-setter-rule/>
+				</pattern>
+				<pattern value="text">
+					<bean-property-setter-rule/>
+				</pattern>
+				<pattern value="right-answer">
+					<bean-property-setter-rule propertyname="rightAnswer"/>
+				</pattern>
+				<set-next-rule methodname="addOption" />
+			</pattern>
+		</pattern>
+	    
+		<pattern value="hint">
+			<bean-property-setter-rule />
+		</pattern>
+		
+		<!--
+		<pattern value="right-answers">
+			<pattern value="right-answer">
+				<object-create-rule classname="org.onproject.onstudy.data.Answer" />
+				<pattern value="id">
+					<bean-property-setter-rule/>
+				</pattern>
+				<set-next-rule methodname="addRightAnswer" />
+			</pattern>
+		</pattern>
+		
+		<pattern value="right-answers">
+			<pattern value="id">
+				<object-create-rule classname="org.onproject.onstudy.data.Answer" />
+				<bean-property-setter-rule/>
+				<set-next-rule methodname="addRightAnswer"/>
+			</pattern>
+		</pattern>
+		-->
+		
+		<pattern value="expository-writing">
+			<bean-property-setter-rule propertyname="expositoryWriting"/>
+		</pattern>
+		
+	</pattern>
+</digester-rules>

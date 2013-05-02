@@ -1,0 +1,52 @@
+  <question>
+    <expository-writing>hashCodeは、Hashアルゴリズムを使った実装にて利用されます。
+これを使った実装は、Hashから始まる名前となっています。
+
+hashCodeによって返される値は、比較対照のオブジェクトが
+同値であれば同じ値、同値で無ければ出来るだけ違う値を返す
+というのが仕様であり、これによって、重い equals審査を呼ぶ
+前の軽い一時審査を行うことが可能です。
+
+尚、HashListという名称のクラスは存在しません。</expository-writing>
+    <hint>名前どおりです。</hint>
+    <id>15</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>ArrayList</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>TreeSet</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>true</right-answer>
+        <text>HashSet</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>true</right-answer>
+        <text>HashMap</text>
+      </option>
+      <option>
+        <id>5</id>
+        <right-answer>false</right-answer>
+        <text>HashList</text>
+      </option>
+      <option>
+        <id>6</id>
+        <right-answer>false</right-answer>
+        <text>LinkedList</text>
+      </option>
+    </options>
+    <sentence>「equalsメソッドを実装した際には、必ず hashCodeも実装するよう
+　にする…というのはよく耳にしますが、私は hashCodeを一度も
+　実装したことがありませんし、バグもありませんでした。」
+
+という人がいます。この人が使うとバグを起こしやすいCollectionの
+実装は何でしょうか？</sentence>
+    <title>hashCode</title>
+  </question>

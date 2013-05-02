@@ -1,0 +1,45 @@
+  <question>
+    <expository-writing>List は順序を保証するインターフェイスで、それ以外は保証しま
+せん。順序は通常、追加順となっていますが、リストにソートを
+かける事で順序を入れ替える事が可能です。
+
+ソートをかける際に利用するのはCollectionsクラスですが、
+（Collection と Collections は別物。紛らわしいので注意）
+ソートメソッドの引数が List t型となっているのは、
+順序を保証できるインターフェイスは List しかないためです。
+Collections.sort(List )
+Collections.sort(List, Comparator)
+
+重複要素を許さないのは List ではなく Set です。
+
+nullを許さないという仕様は Listにはありません。
+
+内部に配列を保持しているのは java.util.ArrayListという実装に
+関係するもので、インターフェイス自体とは無関係です。</expository-writing>
+    <hint>インターフェイスというのがポイントです。</hint>
+    <id>10</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>重複要素を許さない</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>順序を保証する</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>nullを許さない</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>false</right-answer>
+        <text>内部に配列を保持している。</text>
+      </option>
+    </options>
+    <sentence>java.util.List インターフェイス における特徴は何でしょうか？</sentence>
+    <title>List</title>
+  </question>

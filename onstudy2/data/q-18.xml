@@ -1,0 +1,40 @@
+  <question>
+    <expository-writing>要素と並び順の論理的結びつきが強い場合は要素にComparableを、
+複数の並び順が必要な時はComparatorを、双方が必要な時は双方
+を使ってください。尚、双方が定義されている時は、Comparator
+が優先されます。</expository-writing>
+    <hint>Comparableは１つの流儀でしかソートできません。</hint>
+    <id>18</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>Comparableは JDK1.3の古い実装なので、実質全てComparatorで問題ない。</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>要素の立場的に、規定の並び順があって然るべき時はComparableが良い。</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>true</right-answer>
+        <text>要素に特定の立場が無い場合は、ケース毎にComparatorを用意するのがが望ましい。</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>false</right-answer>
+        <text>Comparatorは、要素と結びつきが強い割に外部クラスとなっているので、極力使わない方が良い。</text>
+      </option>
+      <option>
+        <id>5</id>
+        <right-answer>true</right-answer>
+        <text>双方を用意する必要がある場合もある。</text>
+      </option>
+    </options>
+    <sentence>Listの要素をソートする場合、要素自体に Comparableを実装して
+貰う場合と、ListにComparatorを指定してソートする場合があり
+ます。
+どちらでもソートは成功しますが、どちらを使うべきでしょうか？</sentence>
+    <title>ComparableとComparator</title>
+  </question>

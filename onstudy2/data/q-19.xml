@@ -1,0 +1,40 @@
+  <question>
+    <expository-writing>アプリケーションで最も抽象化されなければならない層はビジネス
+ロジック層です。この層は、完全に抽象化され、GUIの影響やデー
+タストアの影響を一切受けないように設計されるべきです。何故な
+ら、この層こそがアプリケーションの中核だからです。
+
+尚、GUI独自の実装からビジネスロジック層をガードするのがプレ
+ゼンテーション層。データストア独自の実装からビジネスロジック
+層をガードするのがデータアクセス層。となります。</expository-writing>
+    <hint>その他の層は、外部からのクッションとして働きます。</hint>
+    <id>19</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>プレゼンテーション層</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>ビジネスロジック層</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>データアクセス層</text>
+      </option>
+    </options>
+    <sentence>アプリケーションを、レイヤ構造を用いて設計すると、以下の３
+層が出来ます。
+
+１）プレゼンテーション層
+２）ビジネスロジック層
+３）データアクセス層（データインテグレーション層）
+
+この内、最も抽象化されなければならない層はどの層でしょうか？
+その他の層は、この層を抽象化させる為にあると言っても過言では
+ありません。</sentence>
+    <title>レイヤ構造</title>
+  </question>

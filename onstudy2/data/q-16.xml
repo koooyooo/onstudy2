@@ -1,0 +1,39 @@
+  <question>
+    <expository-writing>内部要素のhashCode()を利用するのは HashSet実装であり、
+インターフェイスの特徴ではありません。
+
+Setインターフェイスの特徴は、重複要素を許さない事です。
+HashSetは、内部要素の hashCode() + equals() で、
+TreeSetは、内部要素の Compare、若しくは自信の Comparator
+にて、オブジェクトの同値性を判断します。
+
+また、HashSetは nullを許しませんが、これも実装依存の話です
+し、要素の順番は保証しないだけで、わざわざシャッフルはしま
+せん。</expository-writing>
+    <hint>実装とインターフェイスを混同しないでください。</hint>
+    <id>16</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>内部要素のhashCode()を利用する</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>重複要素を許さない</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>nullを許さない</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>false</right-answer>
+        <text>要素の順番をシャッフルする</text>
+      </option>
+    </options>
+    <sentence>java.util.Setインターフェイスの特徴は何でしょうか？</sentence>
+    <title>Set</title>
+  </question>

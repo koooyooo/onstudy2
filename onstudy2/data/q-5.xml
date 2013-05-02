@@ -1,0 +1,28 @@
+  <question>
+    <expository-writing>メソッドは状態を持ちませんし、フィールド変数のコピーを用いる
+理由も特にはありません。ローカル変数は単に処理中に用いるだけ
+の一時変数となります。勿論、一時変数だからといって適当な名前
+をつけたりしてはいけません。</expository-writing>
+    <hint>ノーヒント</hint>
+    <id>5</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>メソッドの状態を表現する変数。</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>処理中に利用するだけの単なる一時変数。</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>フィールド変数のコピーとして用いる変数。</text>
+      </option>
+    </options>
+    <sentence>フィールド変数の意義は、オブジェクトの状態を表現する事ですが、
+ローカル変数の意義は何でしょうか？</sentence>
+    <title>ローカル変数の意義</title>
+  </question>

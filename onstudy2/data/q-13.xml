@@ -1,0 +1,84 @@
+  <question>
+    <expository-writing>設計上、この粒度のメソッドが、コピーと消去のダブルアクションを
+担当しているのは良くありません。消去は、このメソッドをコールする
+メソッドが、コピーの結果を元に処理するべきです。
+
+ストリームを閉じる際の例外は、上位に投げるべきではありません。
+これを投げてしまうと、例外が発生した際、catch節で投げたIO例外
+を、finally節で上書きしてしまう事になります。上位に渡すのは、そも
+そもの原因となった例外であるべきです。
+
+FileInputStreamは、バッファリングする事によって効果的になります。
+
+catch節で、deleteをコールしたとしても、消去対象のファイルはオープン
+したままです。これが finally節で閉じられるまでは deleteは成功しません。
+従って、catch節で deleteが成功する確率は０％となります。
+
+余談ですが、勉強目的以外で、この様なメソッドを実装する必要
+はありません。Jakarta commons.ioパッケージの FileUtils等で
+用意されていますので、既存のものを利用してください。</expository-writing>
+    <hint>設計とタイミングに注意してください。</hint>
+    <id>13</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>設計上、コピーと消去の２動作を持つのは良くない。</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>ストリームを閉じる際の例外は、上位に投げるべきである。</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>FileInputStreamを用いる場合、バッファリングは意味が無い。</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>true</right-answer>
+        <text>catch節での toFile.delete()は常に失敗する。</text>
+      </option>
+    </options>
+    <sentence>ファイルをコピーする以下のメソッドを作成しました。仕様上、
+ファイルのコピーに失敗した場合は、コピー先のファイルも消去
+するようになっています。さて、このメソッドには問題があります。
+それはどういった問題でしょうか？
+
+public static void copyFile(File fromFile, File toFile) throws IOException {
+    BufferedInputStream bis =null;
+    BufferedOutputStream out = null;
+    try {
+        // 入力ストリームの取得
+        bis = new BufferedInputStream(new FileInputStream(fromFile));
+        bos = new BufferedOutputStream(new FileOutputStream(toFile));
+        
+        byte[] buf = new byte[256];
+
+        for (int readLength = 0; (readLength = bis.read(buf)) != -1; ) {
+            bos.write(buf, 0, readLength);
+        }
+        
+    } catch (IOException ioe) {
+        if (toFile.exists()) {
+            toFile.delete();
+        }
+        throw ioe;
+    } finally {
+        if (bis != null) {
+            try {
+                bis.close();
+            } catch (IOException ignore) {
+            }
+        }
+        if (bos != null) {
+            try {
+                bos.close();
+            } catch (IOException ignore) {
+            }
+        }
+    }
+}</sentence>
+    <title>ファイルコピー</title>
+  </question>

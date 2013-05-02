@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/main/java/org/onproject/onstudy/dao/QuestionDAO.java=MS932
+encoding//src/main/java/org/onproject/onstudy/dao/QuestionDAOBetwixtImpl.java=MS932
+encoding//src/main/java/org/onproject/onstudy/dao/QuestionDAODigesterImpl.java=MS932
+encoding//src/main/java/org/onproject/onstudy/data=MS932
+encoding//src/main/java/org/onproject/onstudy/service/ServiceLocator.java=MS932
+encoding//src/main/java/org/onproject/onstudy/ui/swing/BaseFrameOperator.java=MS932
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8

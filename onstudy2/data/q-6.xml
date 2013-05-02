@@ -1,0 +1,37 @@
+  <question>
+    <expository-writing>フィールド変数のメモリ領域が各スレッドから共有されるのに
+対し、ローカル変数のメモリ領域は各スレッド毎に別々に用意
+される為、ローカル変数は本質的にスレッドセーフとなります。
+
+この為、ローカル変数を守るための synchronized 修飾子は不要です。
+
+synchronized修飾子は、複数スレッドによる同一オブジェクト
+の同時操作によりオブジェクトの状態が想定外になる事を防ぐ
+事を目的とし、内部的に順次操作を強制するものです。
+
+オブジェクトの状態を守るという事は、フィールドの状態を
+守る事を意味します。フィールドの状態を守ることが、synch-
+ronized修飾子の本質です。
+</expository-writing>
+    <hint>ローカル変数のメモリ管理に関するものです。</hint>
+    <id>6</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>正しい</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>正しくない</text>
+      </option>
+    </options>
+    <sentence>あるオブジェクトＡは、複数スレッドから利用されます。
+Ａは、フィールド変数こそ持っていませんが、数多くの
+ローカル変数を利用しているので、複数スレッドからコール
+されるメソッドには synchronized 修飾子を付加しました。
+これは実装として正しいですか？
+</sentence>
+    <title>ローカル変数の同期</title>
+  </question>

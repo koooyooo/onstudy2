@@ -1,0 +1,31 @@
+  <question>
+    <expository-writing>Iterator を for ループの中で生成する事によって、Iteratorのスコープ
+がループ内であると明示する事ができます。他では使ってませんよ
+と明示する事によって、コードを保守する人間は、for ループを抜け
+た瞬間に Iterator の事を忘れる事が出来ます。よって、可読性の為
+が正解です。ただ、慣れるまでは却って読み辛いかも知れません。
+因みに、whileループには評価部分しかない為、外部で Iteratorを
+生成しなければなりません。</expository-writing>
+    <hint>Iteratorの生成自体がループ内となっています。</hint>
+    <id>14</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>Iterator の内部カウンタは forループと相性が良い為</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>可読性の為</text>
+      </option>
+    </options>
+    <sentence>Iterator 利用の際、for ループを利用しているコードを見かけますが
+while ループではなくて for ループを用いているのは何の為でしょう
+か？
+
+for (Iterator userIte = userList.iterator(); userIte.hasNext(); ) {
+    // 処理
+}</sentence>
+    <title>for ループ</title>
+  </question>

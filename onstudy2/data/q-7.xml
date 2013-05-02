@@ -1,0 +1,27 @@
+  <question>
+    <expository-writing>以下の観点により、static を用いる方をお勧めします。
+１）getInstance()をコールする必要がないという利便性
+２）static 形式は継承が利用できるという拡張性
+</expository-writing>
+    <hint>コードを想像してください。</hint>
+    <id>7</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>static形式</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>Singleton形式</text>
+      </option>
+    </options>
+    <sentence>文字列操作や日付操作等を行う Utilityクラスの実装方法として、
+staticなメソッドのみを持つ通常のクラスとして実装する場合と、
+Singletonパターンを利用して実装する場合があります。
+
+両者の間に大差はありませんが、利便さの点からどちらを選択
+するのが好ましいでしょうか？</sentence>
+    <title>Utilityクラス</title>
+  </question>

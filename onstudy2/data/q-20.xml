@@ -1,0 +1,85 @@
+  <question>
+    <expository-writing>この問題の本質は、Iteratorとその本体であるSetで、それぞれ
+状態を保持している事によって発生する、整合性のずれです。
+
+先ず３）のsynchronized修飾子ですが、synchronizedで保護
+出来るのは、同一クラス又は同一インスタンス内の状態です。
+UserCacheManagerを幾ら保護した所で、一度外部に漏れて
+しまった Iteratorの状態まで保護（変更）する事は出来ないので
+これは間違いです。
+
+次に２）ですが、出来ないことはありませんが、例外に依存した
+処理で何とかしようというのは、やや強引です。パフォーマンスや
+安定性の観点からも避けたほうが無難です。
+
+この場合、１）の様にシステムはエラーの可能性を含むものの、
+「最善の努力」をし、タイミングが悪かった場合は一旦ユーザに
+処理を戻し、再処理をして貰うというのが正解のアプローチです。
+何でもシステムが面倒をみれば良いというのは過ちです。
+
+尚、そもそも複数スレッドにアクセスされるオブジェクトに、Iterator
+の様なインデックスだけを保持する半端なものを返すのが悪いので
+あって、synchronized でメソッドを保護し、その間のSetの状態を
+保証した上で、新規にSetを用意し、既存のSetの内容を移し変え
+れば状態は整合性の取れた状態で２つになるので、その内の新規
+Setを呼び出し元に返してやれば状態の整合性は保たれるだろうと
+いう発想は、満更間違いではありません。（選択肢にはないですが）
+
+但しこの場合、状態を新規のSetに移し変えた時点で、呼び出し元
+から見れば、状態が固定され、その後のUserCacheManagerの
+状態は一切検知できなくなってしまうので、それで問題無いという
+場合のみに有効です。
+結局、この問題はトランザクション的な問題をも含んでいるのです。</expository-writing>
+    <hint>本質は、Iteratorとその本体であるSetで、それぞれ
+状態を保持している事によって発生する、整合性のずれです。</hint>
+    <id>20</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>エラーをタイミングが悪かったとして諦めシステムエラーとする。システムエラー画面に再実行を促すメッセージを入れれば良い。</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text> ConcurrentModificationExceptionをキャッチして、処理が成功するまでIteratorを再取得して実行する。</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>全ての public メソッドに synchronized修飾子を記述する。</text>
+      </option>
+    </options>
+    <sentence>シングルトンで、ユーザ情報をキャッシュする以下のオブジェクトを
+作成しました。
+
+public class UserCacheManager() {
+    
+    private final Set&lt;User&gt; userSet = new HashSet&lt;User&gt;();
+    
+    public void addUser(User user) {
+        this.userSet(user);
+    }
+    
+    public Iterator&lt;User&gt; userIterator() {
+        return this.userSet.iterator();
+    }
+    
+}
+
+このオブジェクトは、複数スレッドにより共有される為、
+以下の状況が発生してしまいます。
+
+１） スレッドＡが userIterator() をコール
+２） スレッドＢが addUserをコール
+３） スレッドＡが取得した Iterator を回そうとした途端 
+　　ConcurrentModificationExceptionが発生
+　　（Iteratorが参照中のListの状態が変化した為）
+
+この状況を何とかしたいと思いますが、以下の何れの対策
+が有効でしょうか？尚、この現象は、管理者権限を持つ
+ユーザがユーザ情報をメンテナンスした際に200回に一度程
+発生したものとします。
+</sentence>
+    <title>Iteratorの同期</title>
+  </question>

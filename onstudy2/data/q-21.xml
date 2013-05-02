@@ -1,0 +1,41 @@
+  <question>
+    <expository-writing>Mapは、keyを渡すと必ず同じ値が戻ってきます。
+これを実現する為に、keyは重複して登録できない
+様にする必要があります。
+
+この論理性を保証する為、keyを保持するものは
+Setとなります。逆に、valueにはこの様な性質を持つ
+必要性が無い上、その様な制約は利用する上で
+非常に邪魔になりますので、Collectionとなっています。
+
+
+つまり、論理的な理由によって型が異なっていると言えます。
+また、問題で登場する Map, Set, Collectionの３者は、
+何れもインターフェイスですので、速度的な性能は、それを
+履行する具象クラス次第となってしまい、戻り値の型を決定
+する根拠とはなりえません。
+
+尚、Map外部に要素を持ち出す際は SetやCollection
+によって持ち出しますが、内部的には key と value の
+ペアを表現する Map.Entryクラスの集合によって値を
+保持しています。</expository-writing>
+    <hint>key の役割を考えてみて下さい。</hint>
+    <id>21</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>速度的な理由の為異なっている</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>論理的な理由の為異なっている</text>
+      </option>
+    </options>
+    <sentence>Map には key と value の一覧を取得するメソッド
+public Set keySet(); と、 public Collection values();
+があります。key と value で其々戻り値の方が Setと Collection
+と異なっているのは何故でしょうか？</sentence>
+    <title>Mapの keyと value</title>
+  </question>

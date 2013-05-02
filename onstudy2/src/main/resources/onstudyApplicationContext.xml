@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- プロパティ置換コンフィギュレータ -->
+	<bean id="myConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/onstudy.properties</value>
+		</property>
+	</bean>
+	
+	<!-- 問題サービス -->
+	<bean id="questionServiceImpl" class="org.onproject.onstudy.question.service.QuestionServiceImpl">
+		<property name="questionDAO" ref="questionDAOBetwixtImpl"/>
+	</bean>
+	
+	<!-- 問題DAO （Digester） -->
+	<bean id="questionDAODigesterImpl" class="org.onproject.onstudy.question.dao.QuestionDAODigesterImpl">
+		<property name="questionStoreDir">
+			<bean class="java.io.File">
+				<constructor-arg index="0" value="${question.dir}"/>
+			</bean>
+		</property>
+		<property name="questionComparator" ref="questionComparator"/>
+	</bean>
+	
+	<!-- 問題DAO （Betwixt） -->
+	<bean id="questionDAOBetwixtImpl" class="org.onproject.onstudy.question.dao.QuestionDAOBetwixtImpl">
+		<property name="questionStoreDir">
+			<bean class="java.io.File">
+				<constructor-arg index="0" value="${question.dir}"/>
+			</bean>
+		</property>
+		<property name="questionComparator" ref="questionComparator"/>
+	</bean>
+	
+	<!-- 問題比較 -->
+	<bean id="questionComparator" class="org.onproject.onstudy.question.data.QuestionComparatorNumericalStringIDImpl"/>
+	
+	<!-- ユーザマネージャ -->
+	<bean id="userManager" class="org.onproject.onstudy.ui.swing.user.UserManager" init-method="load">
+		<property name="userName" value="${user.name}"/>
+	</bean>
+	
+	<!-- ネットワークサービス -->
+	<bean id="networkServiceImpl" class="org.onproject.onstudy.net.service.NetworkServiceImpl">
+		<property name="networkDAO" ref="networkDAOImpl"/>
+	</bean>
+	
+	<!-- ネットワークDAO -->
+	<bean id="networkDAOImpl" class="org.onproject.onstudy.net.dao.NetworkDAOImpl">
+		<property name="signalingManager" ref="signalingManager"/>
+		<property name="transceivingQPManager" ref="transceivingQPManager"/>
+		<property name="transceivingAPManager" ref="transceivingAPManager"/>
+	</bean>
+	
+	<!-- シグナルマネージャ -->
+	<bean id="signalingManager" class="org.onproject.onstudy.net.dao.signaling.SignalingManager">
+		<property name="userManager" ref="userManager"/>
+		<property name="userPort" value="${question.packet.port}"/>
+		<property name="unicastSender" ref="unicastSender"/>
+		<property name="multicastSender" ref="multicastSender"/>
+		<property name="receiveUnicastSignalingThread" ref="receiveUnicastSignalingThread"/>
+		<property name="receiveMulticastSignalingThread" ref="receiveMulticastSignalingThread"/>
+	</bean>
+	
+	<!-- ユニキャスト受信スレッド -->
+	<bean id="receiveUnicastSignalingThread" class="org.onproject.onstudy.net.dao.signaling.ReceiveUnicastSignalingThread">
+		<property name="unicastReceiver" ref="unicastReceiver"/>
+	</bean>
+	
+	<!-- ユニキャスト送信 -->
+	<bean id="unicastSender" class="org.onproject.onstudy.net.core.UnicastSender">
+		<property name="port" value="${signaling.unicast.port}"/>
+	</bean>
+	
+	<!-- ユニキャスト受信 -->
+	<bean id="unicastReceiver" class="org.onproject.onstudy.net.core.UnicastReceiver">
+		<property name="port" value="${signaling.unicast.port}"/>
+	</bean>
+	
+	<!-- マルチキャスト受信スレッド -->
+	<bean id="receiveMulticastSignalingThread" class="org.onproject.onstudy.net.dao.signaling.ReceiveMulticastSignalingThread">
+		<property name="multicastReceiver" ref="multicastReceiver"/>
+	</bean>
+	
+	<!-- マルチキャスト送信 -->
+	<bean id="multicastSender" class="org.onproject.onstudy.net.core.MulticastSender">
+		<property name="port" value="${signaling.multicast.port}"/>
+	</bean>
+	
+	<!-- マルチキャスト受信 -->
+	<bean id="multicastReceiver" class="org.onproject.onstudy.net.core.MulticastReceiver">
+		<property name="port" value="${signaling.multicast.port}"/>
+	</bean>
+	
+	<!-- 問題パケット送受信マネージャ -->
+	<bean id="transceivingQPManager" class="org.onproject.onstudy.net.dao.qp.TransceivingQPManager">
+		<property name="TCPSender" ref="tcpSender"/>
+		<property name="receiveQPThread" ref="receiveQPThread"/>
+		<property name="userManager" ref="userManager"/>
+		<property name="replyPort" value="${reply.port}"/>
+	</bean>
+	
+	<!-- 問題パケット受信スレッド -->
+	<bean id="receiveQPThread" class="org.onproject.onstudy.net.dao.qp.ReceiveQPThread">
+		<property name="TCPReceiver" ref="tcpQuestionReceiver"/>
+	</bean>
+	
+	<!-- 解答パケット送受信マネージャ -->
+	<bean id="transceivingAPManager" class="org.onproject.onstudy.net.dao.ap.TransceivingAPManager">
+		<property name="TCPSender" ref="tcpSender"/>
+		<property name="receiveAPThread" ref="receiveAPThread"/>
+		<property name="userManager" ref="userManager"/>
+	</bean>
+	
+	<!-- 解答パケット受信スレッド -->
+	<bean id="receiveAPThread" class="org.onproject.onstudy.net.dao.ap.ReceiveAPThread">
+		<property name="TCPReceiver" ref="tcpAnswerReceiver"/>
+	</bean>
+	
+	<!-- TCP送信 -->
+	<bean id="tcpSender" class="org.onproject.onstudy.net.core.TCPSender">
+		<property name="timeoutMillisec" value="${tcp.timeout.millisec}"/>
+	</bean>
+	
+	<!-- TCP受信（問題受信用) -->
+	<bean id="tcpQuestionReceiver" class="org.onproject.onstudy.net.core.TCPReceiver">
+		<property name="port" value="${question.packet.port}"/>
+	</bean>
+	
+	<!-- TCP受信（解答受信用) -->
+	<bean id="tcpAnswerReceiver" class="org.onproject.onstudy.net.core.TCPReceiver">
+		<property name="port" value="${reply.port}"/>
+	</bean>
+	
+</beans>

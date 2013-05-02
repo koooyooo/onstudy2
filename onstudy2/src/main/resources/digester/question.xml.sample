@@ -1,0 +1,32 @@
+<question>
+	<id>1</id>
+	<title>タイトル</title>
+	<sentence>問題文</sentence>
+	<options>
+		<option>
+			<id>1</id>
+			<text>正解の選択肢</text>
+		</option>
+		<option>
+			<id>2</id>
+			<text>正解の選択肢</text>
+		</option>
+		<option>
+			<id>3</id>
+			<text>不正解の選択肢</text>
+		</option>
+	</options>
+	<hint>ヒント</hint>
+	<right-answers>
+		<right-answer>
+			<id>1</id>
+		</right-answer>
+		<right-answer>
+			<id>2</id>
+		</right-answer>
+	</right-answers>
+	<expository-writing>
+		解説ですよ。
+		参考にして下さい。
+	</expository-writing>
+</question>

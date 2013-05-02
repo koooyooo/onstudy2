@@ -1,0 +1,25 @@
+  <question>
+    <expository-writing>Singletonの最大の特徴はインスタンスが限定されるという点です。
+但し、デザインパターンとして実装する場合、コンストラクタを
+privateにする必要があり、継承が出来なくなるという副作用があり
+ます。この為、Singletonはデザインパターンとして実装するべき
+ではなく、常に同じインスタンスを取得したいのであれば、外部の
+存在にその部分を委託するべきです。
+</expository-writing>
+    <hint>今回はありません</hint>
+    <id>2</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>インスタンスが限定される</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>アクセスできるメソッドが１つしかない</text>
+      </option>
+    </options>
+    <sentence>GoFのデザインパターン「Singleton」の特徴は何でしょう？</sentence>
+    <title>Singleton</title>
+  </question>

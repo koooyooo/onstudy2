@@ -1,0 +1,57 @@
+  <question>
+    <expository-writing>同値判定で利用する equalsは必須です。また、Hashアルゴリズム
+を用いるクラス内では、同値判定の事前処理として hashCodeが
+利用されますので、hashCodeの実装も必要でしょう。
+
+コレクションの実装によっては、中の要素の toStringを連鎖的に
+コールしますので、toStringの実装も必要になります。
+
+waitは同期処理を意識しない限り利用しませんし、 finalizeはGC
+実行直前にコールされるもので、実装する必要のあるケースとい
+うのはほぼありません。cloneは自身の複製を作るだけのもので、
+これもコレクションフレームワークとは無関係です。
+
+尚、正解となった３メソッドは、コレクションに格納する可能性
+如何に関わらず、ステートフルなオブジェクト、特にドメインに
+は実装しておくことを強くお勧めします。将来、他人が保守をし
+た際に、そのオブジェクトがコレクションの要素となる可能性は
+非常に高いからです。</expository-writing>
+    <hint>同値判定と文字列表現が対象となります。</hint>
+    <id>9</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>equals</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>true</right-answer>
+        <text>hashCode</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>false</right-answer>
+        <text>wait</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>false</right-answer>
+        <text>finalize</text>
+      </option>
+      <option>
+        <id>5</id>
+        <right-answer>false</right-answer>
+        <text>clone</text>
+      </option>
+      <option>
+        <id>6</id>
+        <right-answer>true</right-answer>
+        <text>toString</text>
+      </option>
+    </options>
+    <sentence>Javaコレクションフレームワーク（Collection, List, Set, Map等）
+を利用する際、要素となるオブジェクトが実装しておくべき
+メソッドは何でしょうか？</sentence>
+    <title>コレクションフレームワーク</title>
+  </question>

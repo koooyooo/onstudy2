@@ -1,0 +1,43 @@
+  <question>
+    <expository-writing>重複する要素が無いのであれば、先ずSetを検討すべきです。
+要素の順番を制御して取得する必要があるのであれば、後から
+Comparatorで整列させれば良い話です。
+
+これは後に getterを追加し、内部で一時 Listに要素を移し変えた
+後で任意のComparatorでソートさせて返却すれば良いという話
+です。ソートの仕方毎にComparatorとgetterを用意すれば、様々
+な形式で並び替えできます。これは処理としての順序です。
+
+一方、Listを保持した場合、Listが表現できるのは、一種類の並び
+だけです。これは状態としての順序です。勿論、先のgetterと同じ
+処理は出来ますが、だとすると、状態としての並びに何の意味が
+あるのかという話になります。
+
+状態としての順序が、課オブジェクト内で重要な意味を持つ場合
+以外は、フィールドの集合に順序を持たせる意味はありません。
+
+余談ですが、getter内では常に一時 Listに要素を移し変えてから、
+一時 List内でソートをしてください。共有資産であるフィールド
+の状態（並び方）が、getterを呼ばれる度に並びが変わってしまう
+というのは問題です。</expository-writing>
+    <hint>状態として表現すべきはどちらでしょうか？</hint>
+    <id>17</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>true</right-answer>
+        <text>Set</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>List</text>
+      </option>
+    </options>
+    <sentence>課オブジェクト内で、フィールドに社員オブジェクトの集合を
+定義したいと思います。集合内で社員が重複する事はありませんので
+集合にはSetを利用したい所ですが、将来的に社員オブジェクトを
+並び替えたい時もあるかも知れませんのでListの方も適切な気が
+します。この場合、どちらを利用すれば良いでしょうか？</sentence>
+    <title>List と Set</title>
+  </question>

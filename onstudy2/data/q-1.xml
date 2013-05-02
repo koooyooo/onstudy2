@@ -1,0 +1,35 @@
+  <question>
+    <expository-writing>修飾子を省略すると、パッケージ内のみからのアクセスを許す
+という事になります。これを「パッケージプライベート」と呼び
+ます。
+
+これは、時として利用価値がありますが、修飾子を省略すると
+人間がメソッドを認識しづらくなるため、利用しないことをお勧め
+します。</expository-writing>
+    <hint>単純なprotectedだと子クラスも有効ですよ？</hint>
+    <id>1</id>
+    <options>
+      <option>
+        <id>1</id>
+        <right-answer>false</right-answer>
+        <text>public</text>
+      </option>
+      <option>
+        <id>2</id>
+        <right-answer>false</right-answer>
+        <text>protected</text>
+      </option>
+      <option>
+        <id>3</id>
+        <right-answer>true</right-answer>
+        <text>（何も記述しない）</text>
+      </option>
+      <option>
+        <id>4</id>
+        <right-answer>false</right-answer>
+        <text>private</text>
+      </option>
+    </options>
+    <sentence>パッケージ内のみアクセスを許すアクセス修飾子は何でしょう？</sentence>
+    <title>アクセス修飾子</title>
+  </question>
