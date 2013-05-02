@@ -47,11 +47,6 @@ public class BaseFrameOperator {
      */
     public void controll() {
     	
-//    	if (2009 != Calendar.getInstance().get(Calendar.YEAR)) {
-//    		System.out.println("Å° Can not invoke OnStudy v2 because of expiration Å°");
-//    		return;
-//    	} // TODO
-    	
         try {
             JProgressBar progressBar = new JProgressBar(0, 100);
             progressBar.setForeground(new Color(199, 220, 104));
